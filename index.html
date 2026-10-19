@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#70737a">
+  <meta name="description" content="DRNews — notícias, ideias e perspectivas compartilhadas pela comunidade.">
+  <title>DRNews — notícias e perspectivas</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23c4170c'/%3E%3Ctext x='50%25' y='55%25' fill='white' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle'%3EDR%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-main">
+      <a class="brand" href="#feed" aria-label="DRNews, início">
+        <span class="brand-mark" aria-hidden="true">DR</span>
+        <span class="brand-name">DR<span>NEWS</span><small>Notícias, ideias e perspectivas</small></span>
+      </a>
+      <label class="search-box" for="searchInput">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscar notícias e posts..." autocomplete="off">
+      </label>
+      <button class="button button-primary header-post" id="openComposer" type="button"><span aria-hidden="true">＋</span> Criar post</button>
+    </div>
+    <nav class="category-nav" aria-label="Navegação por editorias">
+      <div class="wrap nav-scroll" id="mainNav">
+        <button class="nav-link active" data-category="Todas" type="button">Para você</button>
+        <button class="nav-link" data-category="Atualidades" type="button">Atualidades</button>
+        <button class="nav-link" data-category="Experiências" type="button">Experiências</button>
+        <button class="nav-link" data-category="Estudos" type="button">Estudos</button>
+        <button class="nav-link" data-category="Áudio e foco" type="button">Áudio e foco</button>
+        <button class="nav-link" data-category="Bem-estar" type="button">Bem-estar</button>
+        <button class="nav-link" data-category="Comunidade" type="button">Comunidade</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap page-shell">
+    <section id="feedPage" class="page-view" aria-label="Feed de publicações">
+      <div class="columns">
+        <div class="feed-column">
+          <section class="hero-panel">
+            <div class="hero-copy">
+              <div class="eyebrow"><span class="live-dot"></span> Um espaço para compartilhar</div>
+              <h1>Ideias que despertam <em>novas perspectivas.</em></h1>
+              <p>Relatos, pesquisas e conversas sobre experiências pessoais, hábitos, áudio e as formas como interpretamos o mundo.</p>
+              <div class="hero-actions">
+                <button class="button button-primary" data-open-composer type="button">Compartilhar uma ideia <span aria-hidden="true">→</span></button>
+                <span class="hero-note">Leia. Reflita. Participe.</span>
+              </div>
+            </div>
+            <div class="hero-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit orbit-three"></span><span class="hero-monogram">DR<span>.</span></span></div>
+            <span class="hero-index" aria-hidden="true">01 / COMUNIDADE</span>
+          </section>
+
+          <div class="feed-heading">
+            <div><div class="eyebrow">O que está acontecendo</div><h2 id="feedTitle">Últimas publicações</h2></div>
+            <label class="sort-control" for="sortSelect"><span>Ordenar</span><select id="sortSelect"><option value="recent">Recentes</option><option value="popular">Mais lidas</option></select></label>
+          </div>
+          <div class="topic-strip" id="topicFilters" aria-label="Filtrar por categoria">
+            <button class="topic-chip active" data-category="Todas" type="button">Tudo</button>
+            <button class="topic-chip" data-category="Atualidades" type="button">Atualidades</button>
+            <button class="topic-chip" data-category="Experiências" type="button">Experiências</button>
+            <button class="topic-chip" data-category="Estudos" type="button">Estudos</button>
+            <button class="topic-chip" data-category="Áudio e foco" type="button">Áudio e foco</button>
+            <button class="topic-chip" data-category="Bem-estar" type="button">Bem-estar</button>
+            <button class="topic-chip" data-category="Comunidade" type="button">Comunidade</button>
+          </div>
+          <div class="post-grid" id="postGrid"></div>
+          <p class="storage-note" id="storageStatus">Demonstração local: seus posts ficam salvos neste navegador.</p>
+        </div>
+
+        <aside class="sidebar" aria-label="Mais da comunidade">
+          <section class="side-panel trending-panel"><div class="side-heading"><span class="side-kicker">EM ALTA</span><span class="side-spark" aria-hidden="true">✳</span></div><h2>Mais lidas</h2><div class="trending-list" id="popularList"></div></section>
+          <section class="side-panel category-panel"><div class="side-heading"><span class="side-kicker">EXPLORE</span><span class="side-mark" aria-hidden="true">DR</span></div><h2>Editorias</h2><div class="category-list">
+            <button data-category="Atualidades" type="button"><span>Atualidades</span><span>↗</span></button>
+            <button data-category="Experiências" type="button"><span>Experiências</span><span>↗</span></button>
+            <button data-category="Estudos" type="button"><span>Estudos</span><span>↗</span></button>
+            <button data-category="Áudio e foco" type="button"><span>Áudio e foco</span><span>↗</span></button>
+            <button data-category="Bem-estar" type="button"><span>Bem-estar</span><span>↗</span></button>
+            <button data-category="Comunidade" type="button"><span>Comunidade</span><span>↗</span></button>
+          </div></section>
+          <section class="side-panel contribute-panel"><span class="contribute-icon" aria-hidden="true">✳</span><div class="side-kicker">SUA VOZ TEM ESPAÇO</div><h2>Tem algo para dividir?</h2><p>Crie um post, adicione uma capa e conte sua história à comunidade.</p><button class="button button-outline" data-open-composer type="button">Começar um post <span aria-hidden="true">→</span></button></section>
+        </aside>
+      </div>
+    </section>
+
+    <section id="articlePage" class="article-page page-view" hidden aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><a class="footer-brand" href="#feed">DR<span>NEWS</span></a><p>Informação, curiosidade e diferentes perspectivas.</p><div class="footer-meta"><span>Protótipo independente para demonstração.</span><span>Posts deste protótipo são salvos neste navegador.</span></div></div></footer>
+
+  <dialog class="composer-dialog" id="composerDialog" aria-labelledby="composerTitle">
+    <div class="composer-topbar"><div class="composer-brand"><span class="brand-mark brand-mark-small" aria-hidden="true">DR</span><div><span class="composer-kicker">DRNEWS · COMUNIDADE</span><h2 id="composerTitle">Criar um post</h2></div></div><button class="icon-button" id="closeComposer" type="button" aria-label="Fechar editor">×</button></div>
+    <div class="composer-progress" aria-hidden="true"><span class="progress-step active" id="stepCompose"><i>1</i> Escrever</span><span class="progress-line"></span><span class="progress-step" id="stepPreview"><i>2</i> Prévia</span></div>
+    <form id="postForm" class="composer-form">
+      <section id="composePanel" class="compose-panel">
+        <div class="post-kind-label">COMO VOCÊ QUER COMPARTILHAR?</div>
+        <div class="post-kind-picker" role="group" aria-label="Formato do post"><button type="button" class="kind-option active" data-kind="Artigo"><span class="kind-icon">▤</span><span><strong>Artigo</strong><small>Uma ideia mais completa</small></span></button><button type="button" class="kind-option" data-kind="Relato"><span class="kind-icon">◌</span><span><strong>Relato</strong><small>Uma experiência pessoal</small></span></button><button type="button" class="kind-option" data-kind="Discussão"><span class="kind-icon">◇</span><span><strong>Discussão</strong><small>Abra uma conversa</small></span></button></div>
+        <input id="postKind" type="hidden" value="Artigo">
+        <div class="field"><label for="postTitle">Dê um título ao seu post <span class="required-mark">*</span></label><input id="postTitle" maxlength="120" required placeholder="Uma frase que convide à leitura"><small>Seja claro e conte o que as pessoas vão encontrar.</small></div>
+        <div class="field"><label for="postSummary">Escreva uma breve apresentação <span class="required-mark">*</span></label><textarea id="postSummary" maxlength="260" required rows="2" placeholder="Resuma sua ideia em poucas linhas..."></textarea><small>Esse resumo aparece no feed. Até 260 caracteres.</small></div>
+        <div class="field"><label for="postBody">Conte sua história <span class="required-mark">*</span></label><textarea id="postBody" required rows="7" placeholder="Escreva seu post aqui. Separe as ideias em parágrafos e dê contexto para a comunidade..."></textarea><div class="editor-toolbar"><span>Seu texto é seu. Compartilhe com respeito.</span><button id="addMediaButton" class="tool-button" type="button"><span aria-hidden="true">▧</span> Adicionar mídia</button></div><input id="mediaInput" class="visually-hidden" type="file" accept="image/*,video/*,audio/*" multiple><div id="mediaDraftList" class="media-draft-list"></div><small>Imagens, vídeos ou áudios: até 300 KB por arquivo, no máximo quatro por post.</small></div>
+        <div class="cover-upload"><div class="cover-upload-copy"><span class="post-kind-label">IMAGEM DE CAPA</span><strong>Apresente seu post com uma imagem</strong><small>JPG, PNG, GIF ou WebP · até 450 KB</small><button id="chooseCover" class="button button-soft" type="button">＋ Escolher imagem</button><input id="coverInput" class="visually-hidden" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></div><div class="cover-preview" id="coverPreview"><span>CAPA DO POST</span><b>DR<span>.</span></b></div></div>
+        <div class="field topic-field"><label for="topicInput">Tópicos e editoria</label><select id="postCategory"><option>Experiências</option><option>Atualidades</option><option>Estudos</option><option>Áudio e foco</option><option>Bem-estar</option><option>Comunidade</option></select><div class="topic-entry"><div class="topic-tags" id="draftTopics"></div><div class="topic-input-row"><input id="topicInput" maxlength="24" placeholder="Adicione um tópico (opcional)"><button id="addTopic" class="button button-soft" type="button">Adicionar</button></div></div><small>Escolha uma editoria e, se quiser, adicione tópicos para as pessoas encontrarem seu post.</small></div>
+        <div class="author-field field"><label for="authorInput">Como devemos identificar você?</label><input id="authorInput" maxlength="50" placeholder="Nome de exibição" value="Visitante"></div>
+        <div class="composer-feedback" id="composerFeedback" role="status"></div>
+        <div class="composer-actions"><button id="cancelCompose" class="button button-text" type="button">Cancelar</button><button id="previewPost" class="button button-primary" type="button">Pré-visualizar post <span aria-hidden="true">→</span></button></div>
+      </section>
+      <section id="previewPanel" class="preview-panel" hidden>
+        <div class="preview-heading"><div class="post-kind-label">QUASE LÁ</div><h3>Veja como seu post vai aparecer</h3><p>Revise o conteúdo. Você ainda pode voltar e editar antes de publicar.</p></div><article id="postPreviewCard" class="preview-post-card"></article>
+        <div class="preview-actions"><button id="backToEdit" class="button button-outline" type="button">← Editar post</button><div class="preview-actions-right"><button id="cancelPreview" class="button button-text" type="button">Cancelar</button><button class="button button-primary" type="submit">Publicar post <span aria-hidden="true">→</span></button></div></div>
+        <p class="local-disclaimer">Neste protótipo, a publicação fica salva apenas neste navegador.</p>
+      </section>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
